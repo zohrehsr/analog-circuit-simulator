@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "analog-circuit-simulator"
+version = "0.1.0"
+description = "A Python library for behavioral simulation and analysis of analog circuits (RC, RL, RLC) with time-domain and frequency-domain analysis tools."
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{name = "Zohreh"}]
+requires-python = ">=3.10"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Electronic Design Automation (EDA)",
+]
+dependencies = [
+    "numpy>=1.24",
+    "scipy>=1.10",
+    "matplotlib>=3.7",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "ruff>=0.4.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/Zohrehsr/analog-circuit-simulator"
+Repository = "https://github.com/Zohrehsr/analog-circuit-simulator"
+Issues = "https://github.com/Zohrehsr/analog-circuit-simulator/issues"
+
+[project.scripts]
+analog-sim = "analog_circuit_simulator.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "N", "UP", "B", "SIM"]
+ignore = [
+    "N802",  # Function name should be lowercase (e.g. allow transfer function conventions)
+    "N803",  # Argument name should be lowercase (allow R, L, C)
+    "N806",  # Variable name in function should be lowercase (allow R, L, C, R_crit)
+    "E741",  # Ambiguous variable name (allow l for inductor in tests)
+    "E501",  # Line length handled by formatter
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-v --tb=short"

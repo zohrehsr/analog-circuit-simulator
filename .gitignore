@@ -1,0 +1,74 @@
+# ──────────────────────────────────────────────
+# Python
+# ──────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+sdist/
+wheels/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# ──────────────────────────────────────────────
+# Testing & Linting
+# ──────────────────────────────────────────────
+.pytest_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
+
+# ──────────────────────────────────────────────
+# Environment & Secrets
+# ──────────────────────────────────────────────
+.env
+.env.*
+*.pem
+
+# ──────────────────────────────────────────────
+# IDE / Editor
+# ──────────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# ──────────────────────────────────────────────
+# OS files
+# ──────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+Desktop.ini
+ehthumbs.db
+
+# ──────────────────────────────────────────────
+# Jupyter Notebook
+# ──────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ──────────────────────────────────────────────
+# Output plots / generated artifacts
+# ──────────────────────────────────────────────
+examples/output/
+*.png
+.mypy_cache/
+.dmypy.json
+dmypy.json
