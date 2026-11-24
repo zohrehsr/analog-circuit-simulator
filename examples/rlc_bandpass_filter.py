@@ -107,13 +107,23 @@ def main() -> None:
     ax.set_ylabel("Amplitude")
     ax.axhline(1.0, color="#6B7280", linestyle="--", linewidth=1.0, alpha=0.5, label="Final value")
 
+    # Find common time horizon so all curves span the same x-axis
+    t_sim_end = max(
+        analyze_time_response(RLCCircuit(r_val, L, C).transfer_function()[0],
+                              RLCCircuit(r_val, L, C).transfer_function()[1],
+                              response_type="step").time[-1]
+        for r_val, _ in configs
+    )
+
     for (r_val, label), color in zip(configs, colors):
         c = RLCCircuit(r_val, L, C)
         n, d = c.transfer_function()
-        tr = analyze_time_response(n, d, response_type="step", num_points=1000)
-        ax.plot(tr.time, tr.output, color=color, linewidth=2.0,
+        tr = analyze_time_response(n, d, response_type="step", t_end=t_sim_end, num_points=1000)
+        ax.plot(tr.time * 1e3, tr.output, color=color, linewidth=2.0,
                 label=f"{label} (R={r_val:.0f}Ω, ζ={c.damping_ratio:.2f})")
         print(f"    {label}: R={r_val:.1f}Ω, ζ={c.damping_ratio:.3f}, Q={c.quality_factor:.3f}")
+
+    ax.set_xlabel("Time (ms)", fontsize=11)
 
     ax.legend()
     ax.grid(True, alpha=0.35)
