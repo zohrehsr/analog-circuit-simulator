@@ -8,7 +8,7 @@ version = "0.1.0"
 description = "A Python library for behavioral simulation and analysis of analog circuits (RC, RL, RLC) with time-domain and frequency-domain analysis tools."
 readme = "README.md"
 license = {text = "MIT"}
-authors = [{name = "Zohreh"}]
+authors = [{name = "Zohreh Sedighrad"}]
 requires-python = ">=3.10"
 classifiers = [
     "Development Status :: 3 - Alpha",
